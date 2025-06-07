@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Dispersión - YTLG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/charts.css">
+</head>
+<body class="chart-page">
+    <!-- Header -->
+    <div class="chart-header">
+        <h1>Gráfico de Dispersión</h1>
+    </div>
+
+    <!-- Main Content -->
+    <main class="chart-main">
+        <div class="chart-container">
+            <!-- Chart Form -->
+            <div class="chart-form">
+                <form id="scatterForm">
+                    <div class="form-group">
+                        <label for="chartTitle" class="form-label">Título del Gráfico</label>
+                        <input type="text" id="chartTitle" class="form-input" placeholder="Ingresa el título del gráfico" value="Mi Gráfico de Dispersión">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="xAxisLabel" class="form-label">Etiqueta Eje X</label>
+                        <input type="text" id="xAxisLabel" class="form-input" placeholder="Etiqueta para el eje X" value="Variable X">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yAxisLabel" class="form-label">Etiqueta Eje Y</label>
+                        <input type="text" id="yAxisLabel" class="form-input" placeholder="Etiqueta para el eje Y" value="Variable Y">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Puntos de Datos (X, Y)</label>
+                        <div class="data-entries" id="dataEntries">
+                            <div class="data-entry">
+                                <input type="number" class="form-input" placeholder="Valor X" value="10" step="0.01">
+                                <input type="number" class="form-input" placeholder="Valor Y" value="20" step="0.01">
+                            </div>
+                            <div class="data-entry">
+                                <input type="number" class="form-input" placeholder="Valor X" value="15" step="0.01">
+                                <input type="number" class="form-input" placeholder="Valor Y" value="25" step="0.01">
+                            </div>
+                            <div class="data-entry">
+                                <input type="number" class="form-input" placeholder="Valor X" value="20" step="0.01">
+                                <input type="number" class="form-input" placeholder="Valor Y" value="18" step="0.01">
+                            </div>
+                            <div class="data-entry">
+                                <input type="number" class="form-input" placeholder="Valor X" value="25" step="0.01">
+                                <input type="number" class="form-input" placeholder="Valor Y" value="30" step="0.01">
+                            </div>
+                            <div class="data-entry">
+                                <input type="number" class="form-input" placeholder="Valor X" value="30" step="0.01">
+                                <input type="number" class="form-input" placeholder="Valor Y" value="35" step="0.01">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="add-data-btn" onclick="addDataEntry()" title="Agregar punto">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button type="button" class="create-chart-btn" onclick="createScatterChart()">
+                            <i class="fas fa-braille"></i> Crear Gráfico
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Chart Display -->
+            <div class="chart-display">
+                <div class="chart-header-actions">
+                    <h3 id="chartDisplayTitle">Mi Gráfico de Dispersión</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" onclick="downloadChart()" title="Descargar">
+                            <i class="fas fa-download"></i> Descargar
+                        </button>
+                        <button class="chart-action-btn" onclick="resetChart()" title="Limpiar">
+                            <i class="fas fa-trash"></i> Limpiar
+                        </button>
+                    </div>
+                </div>
+                <div id="chartContainer">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Navigation -->
+    <footer class="chart-footer">
+        <div class="container">
+            <div class="chart-nav">
+                <a href="/graficos/donut" class="nav-button" title="Dona">
+                    <i class="fas fa-circle-notch"></i>
+                </a>
+                <a href="/graficos/gauge" class="nav-button" title="Indicador">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+                <a href="/" class="nav-button home" title="Inicio">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="/graficos/columna" class="nav-button" title="Columnas">
+                    <i class="fas fa-chart-bar"></i>
+                </a>
+                <a href="/graficos/lineas" class="nav-button" title="Líneas">
+                    <i class="fas fa-chart-line"></i>
+                </a>
+            </div>
+            <p class="chart-footer-text">Navega entre diferentes tipos de gráficos</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/charts.js"></script>
+    <script>
+        let scatterChart = null;
+
+        function addDataEntry() {
+            const dataEntries = document.getElementById('dataEntries');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'data-entry';
+            newEntry.innerHTML = `
+                <input type="number" class="form-input" placeholder="Valor X" step="0.01">
+                <input type="number" class="form-input" placeholder="Valor Y" step="0.01">
+            `;
+            dataEntries.appendChild(newEntry);
+        }
+
+        function createScatterChart() {
+            const title = document.getElementById('chartTitle').value || 'Gráfico de Dispersión';
+            const xAxisLabel = document.getElementById('xAxisLabel').value || 'Variable X';
+            const yAxisLabel = document.getElementById('yAxisLabel').value || 'Variable Y';
+            const dataEntries = document.querySelectorAll('.data-entry');
+            
+            const data = [];
+            
+            dataEntries.forEach(entry => {
+                const inputs = entry.querySelectorAll('.form-input');
+                const x = parseFloat(inputs[0].value);
+                const y = parseFloat(inputs[1].value);
+                
+                if (!isNaN(x) && !isNaN(y)) {
+                    data.push({x: x, y: y});
+                }
+            });
+
+            if (data.length === 0) {
+                alert('Por favor ingresa al menos un punto válido.');
+                return;
+            }
+
+            // Update display title
+            document.getElementById('chartDisplayTitle').textContent = title;
+
+            // Destroy existing chart
+            if (scatterChart) {
+                scatterChart.destroy();
+            }
+
+            // Create new chart
+            const ctx = document.getElementById('scatterChart').getContext('2d');
+            scatterChart = new Chart(ctx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Datos',
+                        data: data,
+                        backgroundColor: 'rgba(166, 164, 255, 0.6)',
+                        borderColor: '#a6a4ff',
+                        borderWidth: 2,
+                        pointRadius: 6,
+                        pointHoverRadius: 8,
+                        pointBorderWidth: 2,
+                        pointBorderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: title,
+                            font: {
+                                size: 18,
+                                weight: 'bold'
+                            },
+                            color: '#0e0e0e'
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `(${context.parsed.x}, ${context.parsed.y})`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                display: true,
+                                text: xAxisLabel,
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: yAxisLabel,
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+
+        function downloadChart() {
+            if (scatterChart) {
+                const link = document.createElement('a');
+                link.download = 'grafico-dispersion.png';
+                link.href = scatterChart.toBase64Image();
+                link.click();
+            } else {
+                alert('Primero crea un gráfico para poder descargarlo.');
+            }
+        }
+
+        function resetChart() {
+            if (scatterChart) {
+                scatterChart.destroy();
+                scatterChart = null;
+            }
+            
+            // Reset form
+            document.getElementById('chartTitle').value = 'Mi Gráfico de Dispersión';
+            document.getElementById('xAxisLabel').value = 'Variable X';
+            document.getElementById('yAxisLabel').value = 'Variable Y';
+            document.getElementById('chartDisplayTitle').textContent = 'Mi Gráfico de Dispersión';
+            
+            // Reset data entries
+            const dataEntries = document.getElementById('dataEntries');
+            dataEntries.innerHTML = `
+                <div class="data-entry">
+                    <input type="number" class="form-input" placeholder="Valor X" value="10" step="0.01">
+                    <input type="number" class="form-input" placeholder="Valor Y" value="20" step="0.01">
+                </div>
+                <div class="data-entry">
+                    <input type="number" class="form-input" placeholder="Valor X" value="15" step="0.01">
+                    <input type="number" class="form-input" placeholder="Valor Y" value="25" step="0.01">
+                </div>
+                <div class="data-entry">
+                    <input type="number" class="form-input" placeholder="Valor X" value="20" step="0.01">
+                    <input type="number" class="form-input" placeholder="Valor Y" value="18" step="0.01">
+                </div>
+                <div class="data-entry">
+                    <input type="number" class="form-input" placeholder="Valor X" value="25" step="0.01">
+                    <input type="number" class="form-input" placeholder="Valor Y" value="30" step="0.01">
+                </div>
+                <div class="data-entry">
+                    <input type="number" class="form-input" placeholder="Valor X" value="30" step="0.01">
+                    <input type="number" class="form-input" placeholder="Valor Y" value="35" step="0.01">
+                </div>
+            `;
+        }
+
+        // Create initial chart
+        document.addEventListener('DOMContentLoaded', function() {
+            createScatterChart();
+        });
+    </script>
+</body>
+</html>

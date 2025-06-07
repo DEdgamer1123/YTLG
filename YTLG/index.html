@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTLG - Yo Te Lo Grafico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>YTLG</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#graficos">Gráficos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <h2>Menú</h2>
+            <button class="mobile-nav-close" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#graficos">Gráficos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Yo Te Lo Grafico</h1>
+                        <p>Esta página fue diseñada para ayudar a las personas a crear gráficas con la máxima precisión posible, siendo fácil de usar para usuarios de todos los niveles.</p>
+                        <a href="#graficos" class="cta-button">Comenzar Ahora</a>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="chart-animation">
+                            <div class="animated-bars">
+                                <div class="bar bar-1"></div>
+                                <div class="bar bar-2"></div>
+                                <div class="bar bar-3"></div>
+                                <div class="bar bar-4"></div>
+                                <div class="bar bar-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="servicios">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Interpretación</h3>
+                        <p>Desarrollo lógico y didáctico de datos complejos en visualizaciones comprensibles.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Metas</h3>
+                        <p>Globalizar y mejorar el servicio de visualización de datos para todos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Visualización</h3>
+                        <p>Simplificamos datos complejos con gráficos intuitivos y fáciles de entender.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Perfil</h3>
+                        <p>Un vistazo a quiénes somos y lo que hacemos para mejorar tu experiencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts" id="graficos">
+            <div class="container">
+                <h2 class="section-title">Tipos de Gráficas</h2>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Pastel</h3>
+                            <p>Cada sector representa el conteo o porcentaje de observaciones a nivel de la variable.</p>
+                            <a href="/graficos/pastel" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Columnas</h3>
+                            <p>Útiles para mostrar cambios en los datos a lo largo del tiempo o para ilustrar comparaciones.</p>
+                            <a href="/graficos/columna" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Líneas</h3>
+                            <p>Especialmente útil para mostrar tendencias sutiles o líneas de datos que se cruzan.</p>
+                            <a href="/graficos/lineas" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Áreas Escalonadas</h3>
+                            <p>Muestran progresiones escalonadas usando líneas horizontales y verticales.</p>
+                            <a href="/graficos/areas" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Dona</h3>
+                            <p>Similar al pastel pero con un agujero central para destacar datos importantes.</p>
+                            <a href="/graficos/donut" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-braille"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Dispersión</h3>
+                            <p>Perfecto para mostrar correlaciones entre dos variables numéricas.</p>
+                            <a href="/graficos/scatter" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="chart-info">
+                            <h3>Gráfico de Indicador</h3>
+                            <p>Ideal para mostrar valores únicos como velocímetros o medidores de progreso.</p>
+                            <a href="/graficos/gauge" class="chart-button">Crear Gráfico</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contacto">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>¿Tienes alguna pregunta?</h3>
+                        <p>Estamos aquí para ayudarte a crear los mejores gráficos para tus datos.</p>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@yotelogafico.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YTLG</h3>
+                    <p>Creando gráficos perfectos para todos los usuarios.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#graficos">Gráficos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Gráficos</h4>
+                    <ul>
+                        <li><a href="/graficos/pastel">Pastel</a></li>
+                        <li><a href="/graficos/columna">Columnas</a></li>
+                        <li><a href="/graficos/lineas">Líneas</a></li>
+                        <li><a href="/graficos/areas">Áreas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 YTLG - Yo Te Lo Grafico. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/main.js"></script>
+</body>
+</html>
