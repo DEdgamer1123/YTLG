@@ -1,13 +1,13 @@
-YTLG - Yo Te Lo Grafico
+#**YTLG - Yo Te Lo Grafico**
 
 **YTLG (Yo Te Lo Grafico)** es una aplicación web diseñada para ayudar a personas de todos los niveles a crear gráficos precisos, visualmente atractivos y fáciles de interpretar. Ideal para estudiantes, docentes, analistas o cualquier persona que necesite visualizar datos de forma clara y efectiva.
 
-**Vista previa**
+##**Vista previa**
 
 ![image](https://github.com/user-attachments/assets/7569e230-2a5d-46c9-a057-4cbc11968a48)
 
 
-**Características**
+##**Características**
 
 - Interfaz moderna y responsiva
 - Creación de múltiples tipos de gráficos:
@@ -35,7 +35,7 @@ YTLG - Yo Te Lo Grafico
 - Navegación amigable para dispositivos móviles y de escritorio
 - Sección de contacto y enlaces rápidos
 
-**Tecnologías utilizadas**
+##**Tecnologías utilizadas**
 
 - HTML5 / CSS3
 - Bootstrap 5
@@ -44,11 +44,11 @@ YTLG - Yo Te Lo Grafico
 - JavaScript
 - 📁 Estructura modular para cada tipo de gráfico (`/graficos/`)
 
-**Instalación local**
+##**Instalación local**
 
 Puedes descargar o clonar el repositorio y abrir el archivo `index.html` directamente en tu navegador.
 
 ```bash
-git clone https://github.com/tu-usuario/YTLG.git
+git clone https://github.com/DEdgamer1123/YTLG.git
 cd YTLG
 start index.html
