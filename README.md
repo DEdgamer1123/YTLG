@@ -1,4 +1,4 @@
-#**YTLG - Yo Te Lo Grafico**
+#YTLG - Yo Te Lo Grafico
 
 **YTLG (Yo Te Lo Grafico)** es una aplicación web diseñada para ayudar a personas de todos los niveles a crear gráficos precisos, visualmente atractivos y fáciles de interpretar. Ideal para estudiantes, docentes, analistas o cualquier persona que necesite visualizar datos de forma clara y efectiva.
 
